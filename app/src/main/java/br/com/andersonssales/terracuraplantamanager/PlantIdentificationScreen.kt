@@ -34,11 +34,7 @@ import org.json.JSONObject
 fun PlantIdentificationScreen(viewModel: PlantIdentificationViewModel) {
     val plantInfo = viewModel.plantInfo.value
 
-    // Simulando o recebimento das informações do endpoint
-//    LaunchedEffect(key1 = Unit) {
-//
-//
-//    }
+
 
     Column(
         modifier = Modifier
@@ -50,17 +46,6 @@ fun PlantIdentificationScreen(viewModel: PlantIdentificationViewModel) {
         plantInfo?.let { info ->
             val imageUri = info.optString("image")
 
-//            if (imageUri.isNotEmpty()) {
-//                // Carregar imagem usando Glide
-//                Image(
-//                    painter = rememberImagePainter(data = imageUri),
-//                    contentDescription = null,
-//                    modifier = Modifier
-//                        .size(200.dp)
-//                        .clip(MaterialTheme.shapes.medium)
-//                        .background(MaterialTheme.colorScheme.surface)
-//                )
-//            }
             val suggestions = info.getJSONObject("result").getJSONObject("classification").getJSONArray("suggestions")
             val suggestionImages = mutableListOf<String>()
 
@@ -140,9 +125,3 @@ class ViewPagerAdapter(private val images: List<String>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
 
-
-//@Preview
-//@Composable
-//fun PreviewPlantIdentificationScreen() {
-//    PlantIdentificationScreen()
-//}
